@@ -23,6 +23,9 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 15,
+    backgroundColor: '#fff',
+    borderBottomColor: '#eee',
+    borderBottomWidth: 1,
   },
   logo: {
     flexDirection: 'row',

@@ -100,3 +100,28 @@ export const SearchIcon = (props: IconProps) => (
     <Line x1="21" y1="21" x2="15" y2="15" />
   </Svg>
 );
+
+export const StarIcon = (props: IconProps) => (
+  <Svg
+    width={props.size}
+    height={props.size}
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke={props.color}>
+    <Path stroke="none" d="M0 0h24v24H0z" />
+    <Path d="M12 17.75l-6.172 3.245 1.179-6.873-4.993-4.867 6.9-1.002L12 2l3.086 6.253 6.9 1.002-4.993 4.867 1.179 6.873z" />
+  </Svg>
+);
+
+export const TimeIcon = (props: IconProps) => (
+  <Svg
+    width={props.size}
+    height={props.size}
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke={props.color}>
+    <Path stroke="none" d="M0 0h24v24H0z" />
+    <Circle cx="12" cy="12" r="9" />
+    <Polyline points="12 7 12 12 15 15" />
+  </Svg>
+);
