@@ -26,7 +26,7 @@ export default function (item: PostProps) {
         <TouchableOpacity
           onPress={() => console.log(111111)}
           style={style.likebtn}>
-          <UserIcon size={23} color="#696969" />
+          <UserIcon size={23} color="#0468ff" />
           <Text style={style.like}>{item.like}</Text>
         </TouchableOpacity>
       </View>
@@ -37,7 +37,9 @@ export default function (item: PostProps) {
 const style = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    paddingTop: 10,
+    paddingVertical: 10,
+    borderBottomColor: '#eee',
+    borderBottomWidth: 1,
   },
   soru: {
     fontSize: 15,
@@ -58,21 +60,26 @@ const style = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   userAction: {
-    borderTopWidth: 1,
-    borderTopColor: '#eee',
     flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    paddingHorizontal: 15,
   },
   likebtn: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    paddingVertical: 3,
+    backgroundColor: '#fafcff',
+    borderRadius: 3,
+    marginRight: 20,
     alignItems: 'center',
-    paddingHorizontal: 15,
-    paddingVertical: 10,
+    borderWidth: 1,
+    borderColor: '#dceaff',
+    paddingHorizontal: 25,
   },
   like: {
     marginLeft: 5,
-    fontSize: 15,
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#0468ff',
   },
   soru_who: {
     marginBottom: 10,

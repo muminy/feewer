@@ -14,6 +14,8 @@ import {config} from '../constant/config';
 import HMain from '../pages/home/Main';
 import NMain from '../pages/notify/Main';
 import {page_router} from '../constant/page_router';
+import MainProfile from '../pages/profile/Main';
+import ProfileStack from './ProfileStack';
 
 const Bottom = createBottomTabNavigator();
 
@@ -26,8 +28,6 @@ const App = () => (
         inactiveTintColor: config.icolor,
         style: {
           height: 55,
-          paddingBottom: 3,
-          paddingTop: 3,
           elevation: 2,
           borderTopWidth: 1,
           borderTopColor: '#f2f2f2',
@@ -62,7 +62,7 @@ const App = () => (
           ),
         }}
         name={page_router.bottom.profil}
-        component={HMain}
+        component={ProfileStack}
       />
     </Bottom.Navigator>
   </NavigationContainer>

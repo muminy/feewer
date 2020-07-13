@@ -1,18 +1,33 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {LogoIcon, SearchIcon} from '../constant/icons';
-import {config} from '../constant/config';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {SettingIcon, SearchIcon} from '../constant/icons';
+import LogoCard from './logo';
+import {CSSProps} from '../types';
+import {useNavigation} from '@react-navigation/native';
+import {page_router} from '../constant/page_router';
 
 export default function () {
+  const nav = useNavigation();
   return (
     <View style={style.container}>
-      <View style={style.logo}>
-        <LogoIcon size={30} color="#000" />
-        <Text style={style.logo_text}>Feewer</Text>
-      </View>
+      <LogoCard styles={{flex: 0.6}} />
       <View style={style.src}>
         <SearchIcon size={30} color="#000" />
       </View>
+    </View>
+  );
+}
+
+export function ProfileHeader(props: CSSProps) {
+  const nav = useNavigation();
+  return (
+    <View style={[style.container, props.styles]}>
+      <LogoCard styles={{flex: 0.6}} />
+      <TouchableOpacity
+        onPress={() => nav.navigate(page_router.stack.profile.setting)}
+        style={style.src}>
+        <SettingIcon size={30} color="#000" />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -22,7 +37,8 @@ const style = StyleSheet.create({
     height: 50,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 15,
+    paddingRight: 0,
+    paddingLeft: 15,
     backgroundColor: '#fff',
     borderBottomColor: '#eee',
     borderBottomWidth: 1,
@@ -42,5 +58,6 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     flex: 0.4,
     justifyContent: 'flex-end',
+    paddingHorizontal: 15,
   },
 });

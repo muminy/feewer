@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {PostProps, UserNotify} from '../types';
 import {StarIcon, UserIcon, TimeIcon} from '../constant/icons';
+import {config} from '../constant/config';
 
 export default function (props: UserNotify) {
   return (
@@ -11,7 +12,7 @@ export default function (props: UserNotify) {
         {props.type === 'soru' ? (
           <View style={style.userA}>
             <Text style={style.fos}>
-              <Text style={[style.soru, {color: '#293bd8'}]}>
+              <Text style={[style.soru, {color: config.important_color}]}>
                 {props.user.userName}
               </Text>{' '}
               adlı kullanıcıdan bir soru aldınız.
@@ -25,7 +26,7 @@ export default function (props: UserNotify) {
         ) : props.type === 'follow' ? (
           <View style={style.userA}>
             <Text style={style.fos}>
-              <Text style={[style.soru, {color: '#293bd8'}]}>
+              <Text style={[style.soru, {color: config.important_color}]}>
                 {props.user.userName}
               </Text>{' '}
               adlı kullanıcı sizi takip etti!
@@ -38,7 +39,7 @@ export default function (props: UserNotify) {
         ) : (
           <View style={style.userA}>
             <Text style={style.fos}>
-              <Text style={[style.soru, {color: '#293bd8'}]}>
+              <Text style={[style.soru, {color: config.important_color}]}>
                 {props.user.userName}
               </Text>{' '}
               adlı kullanıcı

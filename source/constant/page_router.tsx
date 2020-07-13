@@ -4,4 +4,9 @@ export const page_router = {
     bildirimler: 'Bildirimler',
     profil: 'Profil',
   },
+  stack: {
+    profile: {
+      setting: 'Ayarlar',
+    },
+  },
 };

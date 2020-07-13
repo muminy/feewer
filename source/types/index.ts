@@ -1,4 +1,6 @@
 import {Color} from 'react-native-svg';
+import {CSSProperties} from 'react';
+import {ViewStyle} from 'react-native';
 
 export interface IconProps {
   size: number;
@@ -27,4 +29,8 @@ export interface UserNotify {
   user: UserType;
   time: string;
   cevap?: string;
+}
+
+export interface CSSProps {
+  styles?: ViewStyle;
 }
