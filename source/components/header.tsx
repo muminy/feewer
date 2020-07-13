@@ -24,7 +24,7 @@ export function ProfileHeader(props: CSSProps) {
     <View style={[style.container, props.styles]}>
       <LogoCard styles={{flex: 0.6}} />
       <TouchableOpacity
-        onPress={() => nav.navigate(page_router.stack.profile.setting)}
+        onPress={() => nav.navigate(page_router.stack.profile.setting.menu)}
         style={style.src}>
         <SettingIcon size={30} color="#000" />
       </TouchableOpacity>

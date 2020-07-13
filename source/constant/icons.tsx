@@ -138,3 +138,96 @@ export const SettingIcon = (props: IconProps) => (
     <Circle cx="12" cy="12" r="3" />
   </Svg>
 );
+
+export const AtIcon = (props: IconProps) => (
+  <Svg
+    width={props.size}
+    height={props.size}
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke={props.color}>
+    <Circle cx="12" cy="12" r="4" />
+    <Path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28" />
+  </Svg>
+);
+
+export const RightIcon = (props: IconProps) => (
+  <Svg
+    width={props.size}
+    height={props.size}
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke={props.color}>
+    <Path stroke="none" d="M0 0h24v24H0z" />
+    <Polyline points="9 6 15 12 9 18" />
+  </Svg>
+);
+
+export const AppIcon = (props: IconProps) => (
+  <Svg
+    width={props.size}
+    height={props.size}
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke={props.color}>
+    <Path stroke="none" d="M0 0h24v24H0z" />
+    <Rect x="4" y="4" width="6" height="6" rx="1" />
+    <Rect x="4" y="14" width="6" height="6" rx="1" />
+    <Rect x="14" y="14" width="6" height="6" rx="1" />
+    <Line x1="14" y1="7" x2="20" y2="7" />
+    <Line x1="17" y1="4" x2="17" y2="10" />
+  </Svg>
+);
+
+export const SecurityIcon = (props: IconProps) => (
+  <Svg
+    width={props.size}
+    height={props.size}
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke={props.color}>
+    <Path stroke="none" d="M0 0h24v24H0z" />
+    <Path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
+  </Svg>
+);
+
+export const BellIcon = (props: IconProps) => (
+  <Svg
+    width={props.size}
+    height={props.size}
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke={props.color}>
+    <Path stroke="none" d="M0 0h24v24H0z" />
+    <Path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
+    <Path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+  </Svg>
+);
+
+export const MailIcon = (props: IconProps) => (
+  <Svg
+    width={props.size}
+    height={props.size}
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke={props.color}>
+    <Path stroke="none" d="M0 0h24v24H0z" />
+    <Rect x="3" y="5" width="18" height="14" rx="2" />
+    <Polyline points="3 7 12 13 21 7" />
+  </Svg>
+);
+
+export const PasswordIcon = (props: IconProps) => (
+  <Svg
+    width={props.size}
+    height={props.size}
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke={props.color}>
+    <Path stroke="none" d="M0 0h24v24H0z" />
+    <Circle cx="8" cy="15" r="4" />
+    <Line x1="10.85" y1="12.15" x2="19" y2="4" />
+    <Line x1="18" y1="5" x2="20" y2="7" />
+    <Line x1="15" y1="8" x2="17" y2="10" />
+  </Svg>
+);

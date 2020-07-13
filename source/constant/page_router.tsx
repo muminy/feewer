@@ -6,7 +6,17 @@ export const page_router = {
   },
   stack: {
     profile: {
-      setting: 'Ayarlar',
+      setting: {
+        menu: 'Ayarlar',
+        hesap: 'Hesap Ayarları',
+        set: {
+          username: 'Kullanıcı Adı',
+          password: 'Şifre',
+          email: 'E mail',
+          bildirimler: 'Bildirimler',
+          app: 'Uygulama',
+        },
+      },
     },
   },
 };
