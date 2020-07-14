@@ -1,34 +1,29 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {PostProps} from '../types';
-import {StarIcon, UserIcon} from '../constant/icons';
+import {StarIcon, UserIcon, LogoIcon} from '../constant/icons';
+import {ThemeContext} from '../utils/ThemeContext';
 
 export default function (item: PostProps) {
+  const {theme} = useContext(ThemeContext);
   return (
-    <View style={style.container}>
-      <View style={style.soru_who}>
-        <Text style={style.soru}>{item.soru}</Text>
-        <Text style={style.soran}>{item.soran}</Text>
-      </View>
-      <View style={style.userCard}>
-        <Image source={{uri: item.user.userImage}} style={style.image} />
-        <View style={style.userInfo}>
-          <Text style={[style.soru, {marginBottom: 0, paddingHorizontal: 0}]}>
+    <View style={[style.container, {borderBottomColor: theme.borderColor}]}>
+      <Image source={{uri: item.user.userImage}} style={style.image} />
+      <View style={style.user_card}>
+        <View style={{marginBottom: 10}}>
+          <Text style={[style.soran, {color: theme.color}]}>
             {item.user.userName}
           </Text>
-          <Text>{item.date}</Text>
+          <Text style={style.date}>{item.date}</Text>
         </View>
-      </View>
-      <Text style={{marginBottom: 10, paddingHorizontal: 15}}>
-        {item.cevap}
-      </Text>
-      <View style={style.userAction}>
-        <TouchableOpacity
-          onPress={() => console.log(111111)}
-          style={style.likebtn}>
-          <UserIcon size={23} color="#0468ff" />
-          <Text style={style.like}>{item.like}</Text>
-        </TouchableOpacity>
+        <View style={{marginBottom: 10}}>
+          <Text style={[style.soru, {color: theme.color}]}>{item.soru}</Text>
+          <Text style={[style.cevap, {color: theme.color}]}>{item.cevap}</Text>
+        </View>
+        <View style={style.actions}>
+          <UserIcon size={20} color={theme.color} />
+          <Text style={[style.lcount, {color: theme.color}]}>{item.like}</Text>
+        </View>
       </View>
     </View>
   );
@@ -36,60 +31,47 @@ export default function (item: PostProps) {
 
 const style = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
     paddingVertical: 10,
-    borderBottomColor: '#eee',
+    borderBottomColor: '#e6e6e6',
     borderBottomWidth: 1,
+    flexDirection: 'row',
+    paddingHorizontal: 10,
   },
   soru: {
     fontSize: 15,
     fontWeight: 'bold',
+    marginBottom: 7,
+    color: '#08090a',
   },
   image: {
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35,
     borderRadius: 30,
   },
-  userCard: {
-    flexDirection: 'row',
-    marginBottom: 10,
-    paddingHorizontal: 15,
+  soran: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    lineHeight: 23,
+    color: '#212121',
   },
-  userInfo: {
+  user_card: {
     marginLeft: 10,
-    justifyContent: 'flex-start',
+    flex: 1,
   },
-  userAction: {
-    flexDirection: 'row',
-    paddingHorizontal: 15,
+  date: {
+    fontSize: 12,
+    lineHeight: 15,
+    color: '#64707d',
   },
-  likebtn: {
+  cevap: {
+    fontSize: 14,
+  },
+  actions: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    paddingVertical: 3,
-    backgroundColor: '#fafcff',
-    borderRadius: 3,
-    marginRight: 20,
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#dceaff',
-    paddingHorizontal: 25,
   },
-  like: {
+  lcount: {
     marginLeft: 5,
     fontSize: 12,
-    fontWeight: 'bold',
-    color: '#0468ff',
-  },
-  soru_who: {
-    marginBottom: 10,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    paddingHorizontal: 15,
-  },
-  soran: {
-    color: 'red',
-    fontWeight: 'bold',
-    fontSize: 15,
   },
 });

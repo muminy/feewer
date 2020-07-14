@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {
   AtIcon,
@@ -8,11 +8,13 @@ import {
 } from '../../../constant/icons';
 import {useNavigation} from '@react-navigation/native';
 import {page_router} from '../../../constant/page_router';
+import {ThemeContext} from '../../../utils/ThemeContext';
 
 export default function () {
   const nav = useNavigation();
+  const {theme} = useContext(ThemeContext);
   return (
-    <View style={style.container}>
+    <View style={[style.container, {backgroundColor: theme.backgroundColor}]}>
       <TouchableOpacity
         onPress={() =>
           nav.navigate(page_router.stack.profile.setting.set.username)
@@ -20,9 +22,9 @@ export default function () {
         delayPressIn={0}
         activeOpacity={0.75}
         style={style.li}>
-        <AtIcon color="#000" size={20} />
-        <Text style={style.li_text}>Kullanıcı adı</Text>
-        <RightIcon color="#000" size={20} />
+        <AtIcon color={theme.color} size={20} />
+        <Text style={[style.li_text, {color: theme.color}]}>Kullanıcı adı</Text>
+        <RightIcon color={theme.color} size={20} />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() =>
@@ -31,9 +33,9 @@ export default function () {
         delayPressIn={0}
         activeOpacity={0.75}
         style={style.li}>
-        <PasswordIcon color="#000" size={20} />
-        <Text style={style.li_text}>Şifre</Text>
-        <RightIcon color="#000" size={20} />
+        <PasswordIcon color={theme.color} size={20} />
+        <Text style={[style.li_text, {color: theme.color}]}>Şifre</Text>
+        <RightIcon color={theme.color} size={20} />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() =>
@@ -42,9 +44,9 @@ export default function () {
         delayPressIn={0}
         activeOpacity={0.75}
         style={style.li}>
-        <MailIcon color="#000" size={20} />
-        <Text style={style.li_text}>E mail</Text>
-        <RightIcon color="#000" size={20} />
+        <MailIcon color={theme.color} size={20} />
+        <Text style={[style.li_text, {color: theme.color}]}>E mail</Text>
+        <RightIcon color={theme.color} size={20} />
       </TouchableOpacity>
     </View>
   );

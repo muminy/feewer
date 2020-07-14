@@ -34,3 +34,15 @@ export interface UserNotify {
 export interface CSSProps {
   styles?: ViewStyle;
 }
+
+export interface ThemeType {
+  theme: {
+    backgroundColor: string;
+    color: string;
+    borderColor: string;
+    imColor: string;
+    inactiveColor: string;
+    type: 'dark' | 'light';
+  };
+  setTheme: Function;
+}

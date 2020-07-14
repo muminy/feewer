@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {
   UserIcon,
@@ -10,19 +10,21 @@ import {
 } from '../../../constant/icons';
 import {useNavigation} from '@react-navigation/native';
 import {page_router} from '../../../constant/page_router';
+import {ThemeContext} from '../../../utils/ThemeContext';
 
 const SMenu = () => {
+  const {theme} = useContext(ThemeContext);
   const nav = useNavigation();
   return (
-    <View style={style.container}>
+    <View style={[style.container, {backgroundColor: theme.backgroundColor}]}>
       <TouchableOpacity
         onPress={() => nav.navigate(page_router.stack.profile.setting.hesap)}
         delayPressIn={0}
         activeOpacity={0.75}
         style={style.li}>
-        <SettingIcon color="#000" size={20} />
-        <Text style={style.li_text}>Hesap</Text>
-        <RightIcon color="#000" size={20} />
+        <SettingIcon color={theme.color} size={20} />
+        <Text style={[style.li_text, {color: theme.color}]}>Hesap</Text>
+        <RightIcon color={theme.color} size={20} />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() =>
@@ -31,9 +33,9 @@ const SMenu = () => {
         delayPressIn={0}
         activeOpacity={0.75}
         style={style.li}>
-        <BellIcon color="#000" size={20} />
-        <Text style={style.li_text}>Bildirimler</Text>
-        <RightIcon color="#000" size={20} />
+        <BellIcon color={theme.color} size={20} />
+        <Text style={[style.li_text, {color: theme.color}]}>Bildirimler</Text>
+        <RightIcon color={theme.color} size={20} />
       </TouchableOpacity>
       {/* <View style={style.li}>
         <SecurityIcon color="#000" size={20} />
@@ -45,9 +47,9 @@ const SMenu = () => {
         delayPressIn={0}
         activeOpacity={0.75}
         style={style.li}>
-        <AppIcon color="#000" size={20} />
-        <Text style={style.li_text}>Uygulama</Text>
-        <RightIcon color="#000" size={20} />
+        <AppIcon color={theme.color} size={20} />
+        <Text style={[style.li_text, {color: theme.color}]}>Uygulama</Text>
+        <RightIcon color={theme.color} size={20} />
       </TouchableOpacity>
     </View>
   );

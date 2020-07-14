@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -6,18 +6,27 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import {ThemeContext} from '../../../../utils/ThemeContext';
 
 export default function () {
+  const {theme} = useContext(ThemeContext);
   return (
-    <View style={style.container}>
+    <View style={[style.container, {backgroundColor: theme.backgroundColor}]}>
       <TextInput
-        style={style.input}
+        style={[
+          style.input,
+          {
+            backgroundColor: theme.backgroundColor,
+            borderColor: theme.borderColor,
+          },
+        ]}
+        placeholderTextColor={theme.inactiveColor}
         placeholder="Email adresinizi güncelleyiniz"
       />
       <TouchableOpacity activeOpacity={0.75} delayPressIn={0} style={style.btn}>
         <Text style={style.color}>Değiştir</Text>
       </TouchableOpacity>
-      <Text style={style.info}>
+      <Text style={[style.info, {color: theme.color}]}>
         Email adresinizi yazarken eksik yada yanlış olmadığına emin olun, aksi
         taktirde onaylama maili size ulaşmayacaktır.
       </Text>

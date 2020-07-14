@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -7,40 +7,42 @@ import {
   TouchableOpacity,
   Switch,
 } from 'react-native';
+import {ThemeContext} from '../../../../utils/ThemeContext';
 
 export default function () {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const {theme} = useContext(ThemeContext);
   return (
-    <View style={style.container}>
+    <View style={[style.container, {backgroundColor: theme.backgroundColor}]}>
       <TouchableOpacity
         onPress={() => setIsEnabled(!isEnabled)}
-        style={style.li}>
-        <Text style={style.h3}>Beğeniler</Text>
+        style={[style.li, {borderBottomColor: theme.borderColor}]}>
+        <Text style={[style.h3, {color: theme.color}]}>Beğeniler</Text>
         <View
           style={[
             style.enable,
-            {borderColor: isEnabled ? '#111' : '#ddd'},
+            {borderColor: isEnabled ? theme.color : theme.inactiveColor},
           ]}></View>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => setIsEnabled(!isEnabled)}
-        style={style.li}>
-        <Text style={style.h3}>Takipçiler</Text>
+        style={[style.li, {borderBottomColor: theme.borderColor}]}>
+        <Text style={[style.h3, {color: theme.color}]}>Takipçiler</Text>
         <View
           style={[
             style.enable,
-            {borderColor: isEnabled ? '#111' : '#ddd'},
+            {borderColor: isEnabled ? theme.color : theme.inactiveColor},
           ]}></View>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => setIsEnabled(!isEnabled)}
-        style={style.li}>
-        <Text style={style.h3}>Sorular</Text>
+        style={[style.li, {borderBottomColor: theme.borderColor}]}>
+        <Text style={[style.h3, {color: theme.color}]}>Sorular</Text>
         <View
           style={[
             style.enable,
-            {borderColor: isEnabled ? '#111' : '#ddd'},
+            {borderColor: isEnabled ? theme.color : theme.inactiveColor},
           ]}></View>
       </TouchableOpacity>
     </View>
@@ -88,9 +90,8 @@ const style = StyleSheet.create({
   li: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 6,
+    paddingVertical: 12,
     paddingHorizontal: 15,
-    marginBottom: 2,
-    backgroundColor: '#fff',
+    borderBottomWidth: 1,
   },
 });

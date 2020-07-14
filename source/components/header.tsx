@@ -1,32 +1,52 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {SettingIcon, SearchIcon} from '../constant/icons';
 import LogoCard from './logo';
 import {CSSProps} from '../types';
 import {useNavigation} from '@react-navigation/native';
 import {page_router} from '../constant/page_router';
+import {ThemeContext} from '../utils/ThemeContext';
 
-export default function () {
+export default function (props: {routeName: string}) {
+  const {theme} = useContext(ThemeContext);
   const nav = useNavigation();
   return (
-    <View style={style.container}>
+    <View
+      style={[
+        style.container,
+        {
+          backgroundColor: theme.backgroundColor,
+          borderBottomColor: theme.borderColor,
+        },
+      ]}>
       <LogoCard styles={{flex: 0.6}} />
-      <View style={style.src}>
-        <SearchIcon size={30} color="#000" />
-      </View>
+      <TouchableOpacity
+        onPress={() => nav.navigate(props.routeName)}
+        style={style.src}>
+        <SearchIcon size={30} color={theme.color} />
+      </TouchableOpacity>
     </View>
   );
 }
 
 export function ProfileHeader(props: CSSProps) {
+  const {theme} = useContext(ThemeContext);
   const nav = useNavigation();
   return (
-    <View style={[style.container, props.styles]}>
+    <View
+      style={[
+        style.container,
+        props.styles,
+        {
+          backgroundColor: theme.backgroundColor,
+          borderBottomColor: theme.borderColor,
+        },
+      ]}>
       <LogoCard styles={{flex: 0.6}} />
       <TouchableOpacity
         onPress={() => nav.navigate(page_router.stack.profile.setting.menu)}
         style={style.src}>
-        <SettingIcon size={30} color="#000" />
+        <SettingIcon size={30} color={theme.color} />
       </TouchableOpacity>
     </View>
   );
@@ -40,8 +60,8 @@ const style = StyleSheet.create({
     paddingRight: 0,
     paddingLeft: 15,
     backgroundColor: '#fff',
-    borderBottomColor: '#eee',
     borderBottomWidth: 1,
+    elevation: 0,
   },
   logo: {
     flexDirection: 'row',

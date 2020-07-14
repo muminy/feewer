@@ -1,13 +1,15 @@
-import React, {CSSProperties} from 'react';
+import React, {CSSProperties, useContext} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {LogoIcon} from '../constant/icons';
 import {CSSProps} from '../types';
+import {ThemeContext} from '../utils/ThemeContext';
 
 export default function LogoCard(props: CSSProps) {
+  const {theme} = useContext(ThemeContext);
   return (
     <View style={[style.logo, props.styles]}>
-      <LogoIcon size={30} color="#000" />
-      <Text style={style.logo_text}>Feewer</Text>
+      <LogoIcon size={30} color={theme.color} />
+      <Text style={[style.logo_text, {color: theme.color}]}>Feewer</Text>
     </View>
   );
 }

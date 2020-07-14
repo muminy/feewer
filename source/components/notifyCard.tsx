@@ -1,22 +1,27 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {PostProps, UserNotify} from '../types';
 import {StarIcon, UserIcon, TimeIcon} from '../constant/icons';
 import {config} from '../constant/config';
+import {ThemeContext} from '../utils/ThemeContext';
 
 export default function (props: UserNotify) {
+  const {theme} = useContext(ThemeContext);
   return (
-    <View style={style.container}>
+    <View style={[style.container, {borderBottomColor: theme.borderColor}]}>
       <Image style={style.userImage} source={{uri: props.user.userImage}} />
       <View style={style.NDetail}>
         {props.type === 'soru' ? (
           <View style={style.userA}>
-            <Text style={style.fos}>
-              <Text style={[style.soru, {color: config.important_color}]}>
+            <Text style={[style.fos, {color: theme.color}]}>
+              <Text style={[style.soru, {color: theme.imColor}]}>
                 {props.user.userName}
               </Text>{' '}
               adlı kullanıcıdan bir soru aldınız.
-              <Text style={style.soru}> "{props.soru}"</Text>
+              <Text style={[style.soru, {color: theme.color}]}>
+                {' '}
+                "{props.soru}"
+              </Text>
             </Text>
             <View style={style.timeD}>
               <TimeIcon color="#b3b3b3" size={20} />
@@ -25,8 +30,8 @@ export default function (props: UserNotify) {
           </View>
         ) : props.type === 'follow' ? (
           <View style={style.userA}>
-            <Text style={style.fos}>
-              <Text style={[style.soru, {color: config.important_color}]}>
+            <Text style={[style.fos, {color: theme.color}]}>
+              <Text style={[style.soru, {color: theme.imColor}]}>
                 {props.user.userName}
               </Text>{' '}
               adlı kullanıcı sizi takip etti!
@@ -38,8 +43,8 @@ export default function (props: UserNotify) {
           </View>
         ) : (
           <View style={style.userA}>
-            <Text style={style.fos}>
-              <Text style={[style.soru, {color: config.important_color}]}>
+            <Text style={[style.fos, {color: theme.color}]}>
+              <Text style={[style.soru, {color: theme.imColor}]}>
                 {props.user.userName}
               </Text>{' '}
               adlı kullanıcı

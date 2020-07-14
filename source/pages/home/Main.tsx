@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import Header from '../../components/header';
 import PostCard from '../../components/postCard';
 import {PostProps} from '../../types';
+import {page_router} from '../../constant/page_router';
+import {ThemeContext} from '../../utils/ThemeContext';
 export default function () {
   const [soru, setSoru] = useState<PostProps[]>([
     {
@@ -35,9 +37,11 @@ export default function () {
       soran: 'Anonim',
     },
   ]);
+
+  const {theme} = useContext(ThemeContext);
   return (
-    <View style={style.container}>
-      <Header />
+    <View style={[style.container, {backgroundColor: theme.backgroundColor}]}>
+      <Header routeName={page_router.stack.home.search} />
       <FlatList
         data={soru}
         keyExtractor={(item) => item.id}

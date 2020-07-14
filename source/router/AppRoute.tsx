@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,65 +7,38 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, ThemeProvider} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {HomeIcon, SorularIcon, UserIcon} from '../constant/icons';
 import {config} from '../constant/config';
-import HMain from '../pages/home/Main';
 import NMain from '../pages/notify/Main';
 import {page_router} from '../constant/page_router';
-import MainProfile from '../pages/profile/Main';
+import HomeStack from './HomeStack';
 import ProfileStack from './ProfileStack';
-
+import BottomRouter from './BottomRouter';
+import AuthStack from './AuthStack';
+import {dark, light} from '../constant/config';
+import {ThemeContext} from '../utils/ThemeContext';
 const Bottom = createBottomTabNavigator();
 
-const App = () => (
-  <NavigationContainer>
-    <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-    <Bottom.Navigator
-      tabBarOptions={{
-        activeTintColor: config.color,
-        inactiveTintColor: config.icolor,
-        style: {
-          height: 55,
-          elevation: 2,
-          borderTopWidth: 1,
-          borderTopColor: '#f2f2f2',
-        },
-        labelStyle: {
-          fontWeight: 'bold',
-          fontSize: 12,
-        },
-      }}>
-      <Bottom.Screen
-        options={{
-          tabBarIcon: ({size, color}) => (
-            <HomeIcon size={size + 2} color={color} />
-          ),
-        }}
-        name={page_router.bottom.home}
-        component={HMain}
-      />
-      <Bottom.Screen
-        options={{
-          tabBarIcon: ({size, color}) => (
-            <SorularIcon size={size + 2} color={color} />
-          ),
-        }}
-        name={page_router.bottom.bildirimler}
-        component={NMain}
-      />
-      <Bottom.Screen
-        options={{
-          tabBarIcon: ({size, color}) => (
-            <UserIcon size={size + 2} color={color} />
-          ),
-        }}
-        name={page_router.bottom.profil}
-        component={ProfileStack}
-      />
-    </Bottom.Navigator>
-  </NavigationContainer>
-);
+const App = () => {
+  const [login, setLogin] = useState(true);
+  const [theme, setTheme] = useState('dark');
+  return (
+    <NavigationContainer>
+      <ThemeContext.Provider
+        value={{
+          theme: theme === 'dark' ? dark : light,
+          setTheme: (_: any) => setTheme(_),
+        }}>
+        <StatusBar
+          backgroundColor={theme === 'dark' ? '#000' : '#fff'}
+          barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
+        />
+        {login ? <BottomRouter /> : <AuthStack />}
+      </ThemeContext.Provider>
+    </NavigationContainer>
+  );
+};
 
 export default App;

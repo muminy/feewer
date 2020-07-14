@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import Header from '../../components/header';
 import NotifyCard from '../../components/notifyCard';
 import {UserNotify} from '../../types';
+import {ThemeContext} from '../../utils/ThemeContext';
 
 const Main = () => {
+  const {theme} = useContext(ThemeContext);
   const [notify, setNotify] = useState<UserNotify[]>([
     {
       id: '1',
@@ -56,7 +58,7 @@ const Main = () => {
     },
   ]);
   return (
-    <View style={style.container}>
+    <View style={[style.container, {backgroundColor: theme.backgroundColor}]}>
       <Header />
       <FlatList
         data={notify}

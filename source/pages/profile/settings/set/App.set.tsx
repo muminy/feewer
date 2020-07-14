@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -7,21 +7,28 @@ import {
   TouchableOpacity,
   Switch,
 } from 'react-native';
+import {ThemeContext} from '../../../../utils/ThemeContext';
 
 export default function () {
-  const [isEnabled, setIsEnabled] = useState('dark');
+  const {theme, setTheme} = useContext(ThemeContext);
+  const [isEnabled, setIsEnabled] = useState(theme.type);
+
+  const handleTheme = () => setTheme(isEnabled);
   return (
-    <View style={style.container}>
+    <View style={[style.container, {backgroundColor: theme.backgroundColor}]}>
       <TouchableOpacity
         delayPressIn={0}
         activeOpacity={0.75}
         onPress={() => setIsEnabled('dark')}
         style={style.li}>
-        <Text style={style.h2}>Dark</Text>
+        <Text style={[style.h2, {color: theme.color}]}>Dark</Text>
         <View
           style={[
             style.enable,
-            {borderColor: isEnabled === 'dark' ? '#111' : '#ddd'},
+            {
+              borderColor:
+                isEnabled === 'dark' ? theme.color : theme.inactiveColor,
+            },
           ]}></View>
       </TouchableOpacity>
       <TouchableOpacity
@@ -29,14 +36,21 @@ export default function () {
         activeOpacity={0.75}
         onPress={() => setIsEnabled('light')}
         style={style.li}>
-        <Text style={style.h2}>Light</Text>
+        <Text style={[style.h2, {color: theme.color}]}>Light</Text>
         <View
           style={[
             style.enable,
-            {borderColor: isEnabled === 'light' ? '#111' : '#ddd'},
+            {
+              borderColor:
+                isEnabled === 'light' ? theme.color : theme.inactiveColor,
+            },
           ]}></View>
       </TouchableOpacity>
-      <TouchableOpacity delayPressIn={0} activeOpacity={0.75} style={style.btn}>
+      <TouchableOpacity
+        onPress={handleTheme}
+        delayPressIn={0}
+        activeOpacity={0.75}
+        style={style.btn}>
         <Text style={style.h3}>Güncelle</Text>
       </TouchableOpacity>
     </View>

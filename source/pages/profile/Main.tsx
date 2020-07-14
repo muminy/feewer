@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
+import React, {useState, useContext} from 'react';
+import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
 import {ProfileHeader} from '../../components/header';
 import {config} from '../../constant/config';
 import {PostProps} from '../../types';
 import PostCard from '../../components/postCard';
+import {ThemeContext} from '../../utils/ThemeContext';
 
 const MainProfile = () => {
   const [soru, setSoru] = useState<PostProps[]>([
@@ -69,41 +70,45 @@ const MainProfile = () => {
       soran: 'Anonim',
     },
   ]);
+  const {theme} = useContext(ThemeContext);
   return (
     <View style={style.container}>
-      <ProfileHeader styles={{borderBottomWidth: 0}} />
-      <View style={style.userProfile}>
-        <Image
-          source={{
-            uri:
-              'https://cdn.dribbble.com/users/648289/avatars/small/9b5c5e8162cbba169e2b68cfbb36111a.jpg?1579762604',
-          }}
-          style={style.userImage}
-        />
+      <ProfileHeader />
+      <ScrollView style={{backgroundColor: theme.backgroundColor}}>
         <View style={style.userInfo}>
-          <Text style={style.username}>Emirhan Dereli</Text>
+          <Text style={[style.username, {color: theme.color}]}>
+            Emirhan Dereli
+          </Text>
           <Text style={style.userNickName}>@dereli</Text>
         </View>
-      </View>
-      <View style={style.user_counts}>
-        <View style={style.fcon}>
-          <Text style={style.count}>315</Text>
-          <Text style={style.cinfo}>Soru</Text>
+        <View
+          style={[style.userProfile, {borderBottomColor: theme.borderColor}]}>
+          <Image
+            source={{
+              uri:
+                'https://cdn.dribbble.com/users/648289/avatars/small/9b5c5e8162cbba169e2b68cfbb36111a.jpg?1579762604',
+            }}
+            style={style.userImage}
+          />
+          <View style={style.user_counts}>
+            <View style={style.fcon}>
+              <Text style={[style.count, {color: theme.color}]}>315</Text>
+              <Text style={style.cinfo}>Soru</Text>
+            </View>
+            <View style={style.fcon}>
+              <Text style={[style.count, {color: theme.color}]}>121</Text>
+              <Text style={style.cinfo}>Cevap</Text>
+            </View>
+            <View style={style.fcon}>
+              <Text style={[style.count, {color: theme.color}]}>1.271</Text>
+              <Text style={style.cinfo}>Feew</Text>
+            </View>
+          </View>
         </View>
-        <View style={style.fcon}>
-          <Text style={style.count}>121</Text>
-          <Text style={style.cinfo}>Cevap</Text>
-        </View>
-        <View style={style.fcon}>
-          <Text style={style.count}>1.271</Text>
-          <Text style={style.cinfo}>Feew</Text>
-        </View>
-      </View>
-      <FlatList
-        data={soru}
-        keyExtractor={(item) => item.id}
-        renderItem={({item, index}) => <PostCard {...item} />}
-      />
+        {soru.map((item, key) => (
+          <PostCard key={key} {...item} />
+        ))}
+      </ScrollView>
     </View>
   );
 };
@@ -118,6 +123,7 @@ const style = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10,
     alignItems: 'center',
+    borderBottomWidth: 1,
   },
   userImage: {
     width: 50,
@@ -125,7 +131,11 @@ const style = StyleSheet.create({
     borderRadius: 40,
   },
   userInfo: {
-    marginLeft: 10,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingBottom: 0,
   },
   username: {
     fontSize: 18,
@@ -134,13 +144,12 @@ const style = StyleSheet.create({
   userNickName: {
     fontWeight: 'bold',
     color: config.icolor,
+    marginLeft: 10,
   },
   user_counts: {
     flexDirection: 'row',
     paddingHorizontal: 15,
     paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
   },
   count: {
     fontWeight: 'bold',
@@ -148,6 +157,7 @@ const style = StyleSheet.create({
   },
   fcon: {
     flex: 0.333,
+    alignItems: 'center',
   },
   cinfo: {
     fontWeight: 'bold',

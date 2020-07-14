@@ -18,5 +18,13 @@ export const page_router = {
         },
       },
     },
+    home: {
+      search: 'Ara',
+    },
+    auth: {
+      splash: 'Auth sp',
+      login: 'Giriş yap',
+      singup: 'Kayıt ol',
+    },
   },
 };
