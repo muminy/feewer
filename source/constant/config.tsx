@@ -18,7 +18,7 @@ export const light = {
   color: '#0f0f0f',
   backgroundColor: '#fff',
   borderColor: '#ddd',
-  imColor: '#51d879',
+  imColor: '#212121',
   inactiveColor: '#ddd',
   type: 'light',
   inactiveBackgroundColor: '#eee',

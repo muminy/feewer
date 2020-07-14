@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import Header from '../../components/header';
 import PostCard from '../../components/postCard';
@@ -37,7 +37,6 @@ export default function () {
       soran: 'Anonim',
     },
   ]);
-
   const {theme} = useContext(ThemeContext);
   return (
     <View style={[style.container, {backgroundColor: theme.backgroundColor}]}>

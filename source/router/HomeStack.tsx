@@ -2,7 +2,6 @@ import React, {useContext} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import MainHome from '../pages/home/Main';
 import {page_router} from '../constant/page_router';
-import SMenu from '../pages/profile/settings/Menu';
 import Search from '../pages/global/Search';
 import {ThemeContext} from '../utils/ThemeContext';
 const Stack = createStackNavigator();

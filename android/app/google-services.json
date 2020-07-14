@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "218139171205",
+    "firebase_url": "https://feewer.firebaseio.com",
+    "project_id": "feewer",
+    "storage_bucket": "feewer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218139171205:android:38255f6e2ecad1407e4cec",
+        "android_client_info": {
+          "package_name": "com.feewer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "218139171205-rm646kak9g0c0oqf1h851rnsfft2c0s9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.feewer",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "218139171205-p5l7tatbmabskdddrknot8g6qbveau2q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOZ5EFrxPZ1aLH_Lps2FbRlZB3qemoGX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "218139171205-i95en1129ou23je2l8tcqheold50innn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
