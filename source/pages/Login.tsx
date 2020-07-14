@@ -1,31 +1,42 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {FacebookIcon, TwitterIcon, MailIcon} from '../constant/icons';
+import {ThemeContext} from '../utils/ThemeContext';
 
 export default function () {
+  const {theme} = useContext(ThemeContext);
   return (
-    <View style={style.container}>
-      <View style={style.lbox}>
+    <View style={[style.container, {backgroundColor: theme.backgroundColor}]}>
+      <View style={[style.lbox, {backgroundColor: theme.backgroundColor}]}>
         <Text style={style.logo}>FEEWER</Text>
       </View>
       <TouchableOpacity
         delayPressIn={0}
         activeOpacity={0.75}
-        style={style.singup}>
+        style={[
+          style.singup,
+          {backgroundColor: theme.inactiveBackgroundColor},
+        ]}>
         <FacebookIcon color="#ddd" size={25} />
         <Text style={style.text}>Facebook ile giriş yap</Text>
       </TouchableOpacity>
       <TouchableOpacity
         delayPressIn={0}
         activeOpacity={0.75}
-        style={style.singup}>
+        style={[
+          style.singup,
+          {backgroundColor: theme.inactiveBackgroundColor},
+        ]}>
         <TwitterIcon color="#ddd" size={25} />
         <Text style={style.text}>Twitter ile giriş yap</Text>
       </TouchableOpacity>
       <TouchableOpacity
         delayPressIn={0}
         activeOpacity={0.75}
-        style={style.singup}>
+        style={[
+          style.singup,
+          {backgroundColor: theme.inactiveBackgroundColor},
+        ]}>
         <MailIcon color="#ddd" size={25} />
         <Text style={style.text}>Email ve şifre ile giriş yap</Text>
       </TouchableOpacity>

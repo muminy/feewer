@@ -11,6 +11,7 @@ export const dark = {
   imColor: '#51d879',
   inactiveColor: '#6d6d6d',
   type: 'dark',
+  inactiveBackgroundColor: '#1b1b1b',
 };
 
 export const light = {
@@ -20,4 +21,5 @@ export const light = {
   imColor: '#51d879',
   inactiveColor: '#ddd',
   type: 'light',
+  inactiveBackgroundColor: '#eee',
 };

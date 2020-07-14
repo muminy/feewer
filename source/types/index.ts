@@ -43,6 +43,7 @@ export interface ThemeType {
     imColor: string;
     inactiveColor: string;
     type: 'dark' | 'light';
+    inactiveBackgroundColor: string;
   };
   setTheme: Function;
 }
