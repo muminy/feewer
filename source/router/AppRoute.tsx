@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {StatusBar} from 'react-native';
-import {NavigationContainer, ThemeProvider} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import BottomRouter from './BottomRouter';
 import AuthStack from './AuthStack';
 import {dark, light} from '../constant/config';
 import {ThemeContext} from '../utils/ThemeContext';
 
 const App = () => {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
   const [theme, setTheme] = useState('dark');
   return (
     <NavigationContainer>

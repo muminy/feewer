@@ -7,7 +7,7 @@ export const config = {
 export const dark = {
   color: '#fff',
   backgroundColor: '#000',
-  borderColor: '#2e2e2e',
+  borderColor: '#1a1a1a',
   imColor: '#51d879',
   inactiveColor: '#6d6d6d',
   type: 'dark',
@@ -17,9 +17,9 @@ export const dark = {
 export const light = {
   color: '#0f0f0f',
   backgroundColor: '#fff',
-  borderColor: '#ddd',
+  borderColor: '#f1f1f1',
   imColor: '#212121',
-  inactiveColor: '#ddd',
+  inactiveColor: '#858585',
   type: 'light',
   inactiveBackgroundColor: '#eee',
 };

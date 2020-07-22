@@ -8,8 +8,11 @@ import {
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-community/google-signin';
+import {useNavigation} from '@react-navigation/native';
+import {page_router} from '../constant/page_router';
 
 export default function () {
+  const nav = useNavigation();
   useEffect(() => {
     GoogleSignin.configure({
       scopes: ['https://www.googleapis.com/auth/drive.readonly'], // what API you want to access on behalf of the user, default is email and profile
@@ -45,13 +48,51 @@ export default function () {
   return (
     <View style={[style.container, {backgroundColor: theme.backgroundColor}]}>
       <View style={[style.lbox, {backgroundColor: theme.backgroundColor}]}>
-        <Text style={style.logo}>FEEWER</Text>
+        <Text style={[style.logo, {color: theme.color}]}>FEEWER</Text>
       </View>
-      <GoogleSigninButton
-        style={[style.singup, {width: '90%'}]}
-        color={GoogleSigninButton.Color.Light}
-        onPress={loginOl}
-      />
+      <TouchableOpacity
+        delayPressIn={0}
+        activeOpacity={0.75}
+        style={[
+          style.singup,
+          {
+            borderWidth: 1,
+            borderColor: theme.type === 'light' ? '#ddd' : theme.borderColor,
+          },
+        ]}>
+        <Text
+          style={[
+            style.text,
+            {
+              color: theme.color,
+            },
+          ]}>
+          Giriş yap
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        delayPressIn={0}
+        activeOpacity={0.75}
+        onPress={() =>
+          nav.navigate(page_router.stack.auth.singup.step.kisiselbilgi)
+        }
+        style={[
+          style.singup,
+          {
+            borderWidth: 1,
+            borderColor: theme.type === 'light' ? '#ddd' : theme.borderColor,
+          },
+        ]}>
+        <Text
+          style={[
+            style.text,
+            {
+              color: theme.color,
+            },
+          ]}>
+          Kayıt Ol
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -86,6 +127,7 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     height: 60,
+    justifyContent: 'center',
   },
   text: {
     textTransform: 'uppercase',

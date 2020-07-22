@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {PostProps} from '../types';
-import {StarIcon, UserIcon, LogoIcon} from '../constant/icons';
+import {StarIcon, UserIcon, LogoIcon, CommentsIcon} from '../constant/icons';
 import {ThemeContext} from '../utils/ThemeContext';
 
 export default function (item: PostProps) {
@@ -18,11 +18,20 @@ export default function (item: PostProps) {
         </View>
         <View style={{marginBottom: 10}}>
           <Text style={[style.soru, {color: theme.color}]}>{item.soru}</Text>
-          <Text style={[style.cevap, {color: theme.color}]}>{item.cevap}</Text>
         </View>
-        <View style={style.actions}>
-          <UserIcon size={20} color={theme.color} />
-          <Text style={[style.lcount, {color: theme.color}]}>{item.like}</Text>
+        <View style={{flexDirection: 'row'}}>
+          <View style={style.actions}>
+            <UserIcon size={20} color={theme.color} />
+            <Text style={[style.lcount, {color: theme.color}]}>
+              {item.like}
+            </Text>
+          </View>
+          <View style={[style.actions, {marginLeft: 25}]}>
+            <CommentsIcon size={20} color={theme.color} />
+            <Text style={[style.lcount, {color: theme.color}]}>
+              {item.like}
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -32,14 +41,12 @@ export default function (item: PostProps) {
 const style = StyleSheet.create({
   container: {
     paddingVertical: 10,
-    borderBottomColor: '#e6e6e6',
-    borderBottomWidth: 1,
     flexDirection: 'row',
     paddingHorizontal: 10,
+    borderBottomWidth: 1,
   },
   soru: {
     fontSize: 15,
-    fontWeight: 'bold',
     marginBottom: 7,
     color: '#08090a',
   },

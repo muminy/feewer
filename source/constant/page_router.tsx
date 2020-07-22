@@ -24,7 +24,13 @@ export const page_router = {
     auth: {
       splash: 'Auth sp',
       login: 'Giriş yap',
-      singup: 'Kayıt ol',
+      singup: {
+        main: 'Kayıt ol',
+        step: {
+          kisiselbilgi: 'Kişisel bilgi',
+          gizlilik: 'Şifre',
+        },
+      },
     },
   },
 };
